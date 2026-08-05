@@ -1,15 +1,13 @@
 <!-- ============================================================
-     MFG360 Ops — Website v4.0
-     Version:  4.0
-     Updated:  May 2026
-     Changes:  - V4 logo mark (dual-arc, bi-directional arrows) integrated throughout
-               - MFG360 Ops brand name normalized across all instances
-               - Logo in nav, service cards, footer, favicon
-               - Correct contact: info@clc-technologies.com
-               - Google Search Console verification meta tag added
-               - Canonical tag added (https://mfg360ops.com)
-     Deploy:   Upload index.html to GoDaddy cPanel > public_html
-               Set 301 redirect: clc-technologies.com > mfg360ops.com
+     MFG360 Ops — Website v5.0
+     Version:  5.0
+     Updated:  August 2026
+     Changes:  - Added Solutions section between Services and Case Studies
+               - Added GovCon Intelligence product card in Solutions
+               - Nav updated: Services → Solutions → Case Studies → About → Book a Call
+               - Solutions section uses --pale background for visual distinction
+     Deploy:   Push index.html to GitHub repo (GitHub Pages auto-deploys)
+               DNS managed via Cloudflare (not GoDaddy)
 ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -165,6 +163,55 @@
   .footer-brand { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: rgba(255,255,255,0.7); }
   .footer-brand span { color: rgba(198,216,234,0.6); font-family: 'Source Sans 3', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; margin-left: 4px; }
 
+  /* ── SOLUTIONS ── */
+  #solutions { background: var(--pale); }
+  .solutions-header { margin-bottom: 52px; }
+  .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .solutions-grid.single { grid-template-columns: minmax(320px, 480px); justify-content: start; }
+  .solution-card {
+    background: var(--white); border-radius: 4px; overflow: hidden;
+    border: 1px solid var(--rule); border-top: 3px solid var(--navy);
+    box-shadow: 0 2px 12px rgba(76,108,140,0.08);
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .solution-card:hover { box-shadow: 0 10px 36px rgba(76,108,140,0.16); transform: translateY(-3px); }
+  .solution-card-top { background: var(--navy); padding: 28px 28px 24px; position: relative; }
+  .solution-live-badge {
+    display: inline-block; background: #27ae60; color: white;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .solution-card-top h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); line-height: 1.3; margin-bottom: 6px; }
+  .solution-card-top p { font-size: 0.82rem; color: var(--light-blue); font-weight: 300; }
+  .solution-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
+  .solution-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+  .solution-stat { font-size: 0.75rem; background: var(--pale); color: var(--primary); padding: 3px 10px; border-radius: 2px; font-weight: 600; letter-spacing: 0.04em; }
+  .solution-features { list-style: none; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .solution-features li { font-size: 0.88rem; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.5; }
+  .solution-features li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-weight: 600; }
+  .solution-cta {
+    display: block; text-align: center;
+    background: var(--primary); color: var(--white);
+    text-decoration: none; padding: 12px 20px;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em;
+    border-radius: 3px; transition: background 0.2s; margin-top: auto;
+  }
+  .solution-cta:hover { background: var(--navy); }
+  .solution-coming-soon {
+    background: var(--white); border-radius: 4px;
+    border: 1.5px dashed var(--rule); padding: 36px 32px;
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 12px;
+  }
+  .solution-coming-badge {
+    display: inline-block; background: var(--pale); color: var(--muted);
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 10px;
+  }
+  .solution-coming-soon h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--navy); }
+  .solution-coming-soon p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
   /* ── MOBILE ── */
   @media (max-width: 900px) {
     nav { padding: 0 24px; }
@@ -174,6 +221,7 @@
     .metrics-strip { grid-template-columns: repeat(2, 1fr); padding: 36px 28px; }
     section { padding: 60px 28px; }
     .services-grid { grid-template-columns: 1fr; }
+    .solutions-grid { grid-template-columns: 1fr; }
     .case-grid { grid-template-columns: 1fr; }
     #about { grid-template-columns: 1fr; gap: 40px; padding: 60px 28px; }
     #contact { padding: 60px 28px; }
@@ -205,6 +253,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#solutions">Solutions</a></li>
     <li><a href="#case-studies">Case Studies</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="https://calendly.com/clc-technologies/30min-discovery-call" target="_blank" class="nav-cta">Book a Call</a></li>
@@ -368,6 +417,43 @@
       <p>B2B GTM strategy, aftermarket business development, channel strategy, and sales operations improvement. We build the frameworks and then work alongside your team to execute them.</p>
       <p class="service-result">→ 150% sales goal attainment · $1M+ services deal at North America OEM</p>
     </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solutions">
+  <div class="solutions-header">
+    <p class="section-eyebrow">Solutions</p>
+    <h2 class="section-title">Data &amp; AI Products for Discrete Manufacturers</h2>
+    <div class="section-rule"></div>
+    <p class="section-intro">Built on the same domain expertise that powers our consulting practice — purpose-built tools for manufacturers navigating federal contracting, design complexity, and operational intelligence.</p>
+  </div>
+  <div class="solutions-grid single">
+
+    <!-- GovCon Intelligence -->
+    <div class="solution-card">
+      <div class="solution-card-top">
+        <div class="solution-live-badge">⚡ Live — Early Access</div>
+        <h3>GovCon Intelligence</h3>
+        <p>Federal Contract Intelligence for Discrete Manufacturers</p>
+      </div>
+      <div class="solution-card-body">
+        <div class="solution-stats">
+          <span class="solution-stat">186K+ Contract Records</span>
+          <span class="solution-stat">26 NAICS Codes</span>
+          <span class="solution-stat">$47B+ Tracked</span>
+          <span class="solution-stat">Weekly Refresh</span>
+        </div>
+        <ul class="solution-features">
+          <li>Track federal contract awards across automotive, aerospace &amp; defense, electronics, industrial machinery, and fabricated metals</li>
+          <li>Browse 186K+ records across 26 NAICS codes — filter by sector, agency, and recipient. Free to browse.</li>
+          <li>Export to CSV &amp; Excel and other advanced features available on upgrade</li>
+          <li>Early adopter pricing locked for life at $2.99/month</li>
+        </ul>
+        <a href="https://intelligence.mfg360ops.com" target="_blank" class="solution-cta">Explore the Platform →</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
